@@ -27,6 +27,7 @@ var config = {
       name: 'gallery0644'
     },
     port: port,
+    production: true,
     db: process.env.MONGOLAB_URI
   }
 };
