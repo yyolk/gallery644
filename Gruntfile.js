@@ -9,14 +9,35 @@ module.exports = function (grunt) {
   require('load-grunt-tasks')(grunt);
 
   var reloadPort = 35729, files;
-
+  var yeomanConfig = {
+      app: 'app',
+      dist: 'public'
+  };
   grunt.initConfig({
+    yeoman: yeomanConfig,
     pkg: grunt.file.readJSON('package.json'),
     develop: {
       server: {
         file: 'app.js'
       }
     },
+    compass: {
+      options: {
+        sassDir: '<%= yeoman.app %>/styles',
+        cssDir: 'public/css',
+        imagesDir: '<%= yeoman.app %>/img',
+        javascriptsDir: 'public/js',
+        fontsDir: '<%= yeoman.app %>/styles/fonts',
+        importPath: 'public/components',
+        relativeAssets: true
+      },
+      dist: {},
+      server: {
+        options: {
+          debugInfo: true
+        }
+      }
+    },    
     watch: {
       options: {
         nospawn: true,
